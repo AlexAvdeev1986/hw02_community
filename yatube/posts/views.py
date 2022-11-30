@@ -4,7 +4,7 @@ from .models import Post, Group
 
 def index(request):
     template = 'posts/index.html'
-    posts = Post.objects.all()[:10]
+    posts = Post.objects.all()
     context = {
         'posts': posts,
     }
@@ -14,7 +14,7 @@ def index(request):
 def group_list(request, slug):
     template = 'posts/group_list.html'
     group = get_object_or_404(Group, slug=slug)
-    posts = Post.objects.filter(group=group)[:10]
+    posts = Post.objects.filter(group=group)
     context = {
         'text': slug,
         'group': group,
